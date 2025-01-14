@@ -5,11 +5,10 @@ import { PostagemController } from "./controllers/postagem.controller";
 import { PostagemService } from "./services/postagem.service";
 
 @Module({
-
     imports: [TypeOrmModule.forFeature([Postagem])],
-    controllers: [PostagemController],
-    providers: [PostagemService],
-    exports: [TypeOrmModule],
+    controllers: [PostagemController],//definir as requisições get, post, delete 
+    providers: [PostagemService], // classe regra negocio, os metodos para interagir com banco , 
+    exports: [TypeOrmModule], // export acesso a estrutura appmodule
 })
 
 export class PostagemModule{}

@@ -25,3 +25,7 @@ import { Postagem } from './postagem/entities/postagem.entity';
   providers: [],
 })
 export class AppModule {}
+
+
+
+// responsavel por subir a aplicação, todos os recursos que construirmos vamos registrar dentro da app module. Quando criarmos tema, usuários e segurança vamos registrr aqui para que o nest saiba que eles existam. Não carrega quando inicializa app. start:dev inicializa a app em modo dev
