@@ -1,6 +1,7 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Tema } from "../../tema/entities/tema.entity";
 
 @Entity({name: "tb_postagens"}) // CREATE TABLE tb_postagem()
 export class Postagem{
@@ -20,6 +21,13 @@ texto: string;
 
 @UpdateDateColumn() // adiciona data e hora automaticamente
 data: Date; // guarda data e hora unico campo typescript 
+
+
+// varias postagens associad a 1 tema .. N
+@ManyToOne(() => Tema, (tema) => tema.postagem,{
+    onDelete: "CASCADE" // cacasteamento, prorpeidade BD toda vez que apagar o tema, todas as postagens associadas serao apagadas 
+})
+tema: Tema; // inserindo um objeto da classe tema 
 
 }
 
