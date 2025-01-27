@@ -10,20 +10,17 @@ import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './auth/usuario/usuario.module';
 import { Usuario } from './auth/usuario/entities/usuario.entity';
 import { Bcrypt } from './auth/bcrypt/bcrypt';
+import { ConfigModule } from '@nestjs/config';
+import { ProdService } from './data/services/prod.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database:'db_blogpessoal',
-      entities: [Postagem, Tema, Usuario], 
-      synchronize: true, 
-      logging: true 
-    }),
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync({
+    	useClass: ProdService,
+      imports: [ConfigModule],
+}),
+    
     PostagemModule,
     TemaModule,
     AuthModule,
