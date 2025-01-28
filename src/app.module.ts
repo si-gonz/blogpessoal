@@ -12,12 +12,13 @@ import { Usuario } from './auth/usuario/entities/usuario.entity';
 import { Bcrypt } from './auth/bcrypt/bcrypt';
 import { ConfigModule } from '@nestjs/config';
 import { ProdService } from './data/services/prod.service';
+import { DevService } from './data/services/dev.service';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
-    	useClass: ProdService,
+    	useClass: DevService,
       imports: [ConfigModule],
 }),
     
@@ -27,7 +28,7 @@ import { ProdService } from './data/services/prod.service';
     UsuarioModule
 
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
