@@ -21,7 +21,11 @@ export class UsuarioService {
     }
 
     async findAll(): Promise<Usuario[]> {
-        return await this.usuarioRepository.find();
+        return await this.usuarioRepository.find({
+            relations: {
+                postagem: true,
+            },
+        });
 
     }
 
@@ -30,7 +34,10 @@ export class UsuarioService {
         const usuario = await this.usuarioRepository.findOne({
             where: {
                 id
-            }
+            },
+            relations: {
+                postagem: true,
+            },
         });
 
         if (!usuario)

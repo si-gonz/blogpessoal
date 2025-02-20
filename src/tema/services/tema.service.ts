@@ -18,6 +18,7 @@ export class  TemaService{
             {
                 relations:{
                     postagem: true
+                    
                 }
             }
         ); // SELECT * FROM tb_tema;
