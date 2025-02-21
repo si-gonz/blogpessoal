@@ -18,7 +18,7 @@ import { DevService } from './data/services/dev.service';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
-    	useClass: DevService,
+    	useClass: process.env.NODE_ENV === 'production' ? ProdService : DevService,
       imports: [ConfigModule],
 }),
     
