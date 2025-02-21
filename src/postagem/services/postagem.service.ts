@@ -17,7 +17,8 @@ export class  PostagemService{
     async findAll(): Promise<Postagem[]>{
         return this.postagemRepository.find({
             relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
         }); // SELECT * FROM Tb_postagens;
     }
@@ -29,7 +30,8 @@ export class  PostagemService{
                 id
             },
             relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
         }) // variavel que  recebe resul. da busca pra checar se é nulo
 
